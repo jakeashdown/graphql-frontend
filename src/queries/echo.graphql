@@ -1,0 +1,3 @@
+query Echo {
+    echoed: echo(toEcho: "to-echo")
+}

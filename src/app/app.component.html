@@ -1,9 +1,3 @@
-<div *ngIf="loading">
-  Loading...
-</div>
-<div *ngIf="error">
-  Error :(
-</div>
 <div *ngIf="echoed">
-  <p>echoed value is: {{echoed}}</p>
+  <p>echoed value is: {{ echoed | async }}</p>
 </div>
