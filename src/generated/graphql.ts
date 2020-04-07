@@ -16,6 +16,7 @@ export type Scalars = {
 export type Query = {
    __typename?: 'Query';
   echo: Scalars['String'];
+  user?: Maybe<User>;
 };
 
 
@@ -23,24 +24,43 @@ export type QueryEchoArgs = {
   toEcho: Scalars['String'];
 };
 
-export type EchoQueryVariables = {};
+
+export type QueryUserArgs = {
+  id: Scalars['String'];
+};
+
+export type User = {
+   __typename?: 'User';
+  id: Scalars['String'];
+  name: Scalars['String'];
+};
+
+export type UserQueryVariables = {
+  id: Scalars['String'];
+};
 
 
-export type EchoQuery = (
+export type UserQuery = (
   { __typename?: 'Query' }
-  & { echoed: Query['echo'] }
+  & { user?: Maybe<(
+    { __typename?: 'User' }
+    & Pick<User, 'id' | 'name'>
+  )> }
 );
 
-export const EchoDocument = gql`
-    query Echo {
-  echoed: echo(toEcho: "to-echo")
+export const UserDocument = gql`
+    query User($id: String!) {
+  user(id: $id) {
+    id
+    name
+  }
 }
     `;
 
   @Injectable({
     providedIn: 'root'
   })
-  export class EchoGQL extends Apollo.Query<EchoQuery, EchoQueryVariables> {
-    document = EchoDocument;
+  export class UserGQL extends Apollo.Query<UserQuery, UserQueryVariables> {
+    document = UserDocument;
     
   }

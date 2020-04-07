@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {Apollo} from 'apollo-angular';
+import { Component, OnInit } from '@angular/core';
+import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
-import { EchoGQL } from './../generated/graphql'
+import { UserGQL } from './../generated/graphql'
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -11,9 +11,9 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  echoed: Observable<string>;
+  trasheRacerName: Observable<string>;
 
-  constructor(echoGQL: EchoGQL) {
-    this.echoed = echoGQL.watch().valueChanges.pipe(map(result => result.data.echoed));
+  constructor(userGql: UserGQL) {
+    this.trasheRacerName = userGql.fetch({ id: 'trashe-racer' }).pipe(map(result => result.data.user && result.data.user.name));
   }
 }
