@@ -1,0 +1,19 @@
+<div *ngIf="userObservable | async as user; else elseBlock">
+    <h3>{{ user.id }}</h3>
+    <div>
+        <label>Name: </label>
+        <!-- <input [(ngModel)]="user.name" placeholder="name"/> -->
+        {{ user.name }}
+    </div>
+    <!-- <p>
+      <button (click)="gotoHeroes(hero)">Back</button>
+    </p> -->
+</div>
+
+<ng-template #elseBlock>
+    <h3>User not found</h3>
+    <div>
+        <label>Id: </label>{{ idOfUserNotFound }}
+    </div>
+
+</ng-template>
