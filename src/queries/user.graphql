@@ -1,6 +1,5 @@
 query User($id: String!) {
   user(id: $id) {
-    id
-    name
+    ...userFields
   }
 }

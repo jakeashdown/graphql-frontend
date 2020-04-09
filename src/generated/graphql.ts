@@ -34,6 +34,11 @@ export type User = Identifiable & {
   name: Scalars['String'];
 };
 
+export type UserFieldsFragment = (
+  { __typename?: 'User' }
+  & Pick<User, 'id' | 'name'>
+);
+
 export type UserQueryVariables = {
   id: Scalars['String'];
 };
@@ -43,7 +48,7 @@ export type UserQuery = (
   { __typename?: 'Query' }
   & { user?: Maybe<(
     { __typename?: 'User' }
-    & Pick<User, 'id' | 'name'>
+    & UserFieldsFragment
   )> }
 );
 
@@ -54,18 +59,23 @@ export type UsersQuery = (
   { __typename?: 'Query' }
   & { users: Array<(
     { __typename?: 'User' }
-    & Pick<User, 'id' | 'name'>
+    & UserFieldsFragment
   )> }
 );
 
+export const UserFieldsFragmentDoc = gql`
+    fragment userFields on User {
+  id
+  name
+}
+    `;
 export const UserDocument = gql`
     query User($id: String!) {
   user(id: $id) {
-    id
-    name
+    ...userFields
   }
 }
-    `;
+    ${UserFieldsFragmentDoc}`;
 
   @Injectable({
     providedIn: 'root'
@@ -77,11 +87,10 @@ export const UserDocument = gql`
 export const UsersDocument = gql`
     query Users {
   users {
-    id
-    name
+    ...userFields
   }
 }
-    `;
+    ${UserFieldsFragmentDoc}`;
 
   @Injectable({
     providedIn: 'root'
