@@ -4,12 +4,12 @@
     <h3>{{ user.id }}</h3>
     <div *ngIf="user.name">
         <label>Name: </label>
-        <!-- <input [(ngModel)]="user.name" placeholder="name"/> -->
         {{ user.name }}
     </div>
-    <!-- <p>
-      <button (click)="gotoHeroes(hero)">Back</button>
-    </p> -->
+    <div>
+        <label>Created at: </label>
+        {{ user.createdAt }}
+    </div>
 </div>
 
 <ng-template #elseBlock>

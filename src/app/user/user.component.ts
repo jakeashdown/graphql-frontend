@@ -25,7 +25,7 @@ export class UserComponent implements OnInit {
         const id: string = params.get('id');
         return this.userGql.watch({ id }).valueChanges.pipe(map(({data}) => {
           this.idOfUserNotFound = data.user ? null : id;
-          return data.user && { id: data.user.id, name: data.user.name };
+          return data.user;
         }));
       }
     )

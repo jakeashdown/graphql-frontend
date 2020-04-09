@@ -9,6 +9,7 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
+  LocalDateTime: any;
 };
 
 
@@ -16,6 +17,7 @@ export type Scalars = {
 export type Identifiable = {
   id: Scalars['String'];
 };
+
 
 export type Query = {
    __typename?: 'Query';
@@ -32,11 +34,12 @@ export type User = Identifiable & {
    __typename?: 'User';
   id: Scalars['String'];
   name?: Maybe<Scalars['String']>;
+  createdAt: Scalars['LocalDateTime'];
 };
 
 export type UserFieldsFragment = (
   { __typename?: 'User' }
-  & Pick<User, 'id' | 'name'>
+  & Pick<User, 'id' | 'name' | 'createdAt'>
 );
 
 export type UserQueryVariables = {
@@ -67,6 +70,7 @@ export const UserFieldsFragmentDoc = gql`
     fragment userFields on User {
   id
   name
+  createdAt
 }
     `;
 export const UserDocument = gql`
