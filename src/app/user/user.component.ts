@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { map, switchMap } from 'rxjs/operators';
 import { User, UserGQL } from 'src/generated/graphql';
 import { Observable } from 'rxjs';
@@ -20,7 +20,6 @@ export class UserComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
     this.userObservable = this.route.paramMap.pipe(
       switchMap((params) => {
         const id: string = params.get('id')

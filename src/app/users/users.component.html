@@ -1,1 +1,9 @@
-<p>users works!</p>
+<h2>Users</h2>
+
+<ul>
+    <li *ngFor="let user of usersObservable | async">
+      <a [routerLink]="['/user', user.id]">
+        <b>{{ user.id }}</b>
+      </a>
+    </li>
+  </ul>

@@ -1,3 +1,5 @@
+<h2>User</h2>
+
 <div *ngIf="userObservable | async as user; else elseBlock">
     <h3>{{ user.id }}</h3>
     <div>
