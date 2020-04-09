@@ -10,13 +10,13 @@ import { map } from 'rxjs/operators';
 })
 export class UsersComponent implements OnInit {
 
-  usersObservable: Observable<User[]>
+  usersObservable: Observable<User[]>;
 
   constructor(private usersGql: UsersGQL) { }
 
   ngOnInit(): void {
     this.usersObservable = this.usersGql.watch().valueChanges
-    .pipe(map(({data}) => data.users))
+    .pipe(map(({data}) => data.users));
   }
 
 }
