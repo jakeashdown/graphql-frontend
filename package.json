@@ -3,12 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "generate": "graphql-codegen --config codegen.yml",
+    "prestart": "graphql-codegen --config codegen.yml",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "generate": "graphql-codegen --config codegen.yml"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {

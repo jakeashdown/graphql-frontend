@@ -13,15 +13,14 @@ export type Scalars = {
 
 
 
-export type Query = {
-   __typename?: 'Query';
-  echo: Scalars['String'];
-  user?: Maybe<User>;
+export type Identifiable = {
+  id: Scalars['String'];
 };
 
-
-export type QueryEchoArgs = {
-  toEcho: Scalars['String'];
+export type Query = {
+   __typename?: 'Query';
+  users: Array<User>;
+  user?: Maybe<User>;
 };
 
 
@@ -29,7 +28,7 @@ export type QueryUserArgs = {
   id: Scalars['String'];
 };
 
-export type User = {
+export type User = Identifiable & {
    __typename?: 'User';
   id: Scalars['String'];
   name: Scalars['String'];
@@ -43,6 +42,17 @@ export type UserQueryVariables = {
 export type UserQuery = (
   { __typename?: 'Query' }
   & { user?: Maybe<(
+    { __typename?: 'User' }
+    & Pick<User, 'id' | 'name'>
+  )> }
+);
+
+export type UsersQueryVariables = {};
+
+
+export type UsersQuery = (
+  { __typename?: 'Query' }
+  & { users: Array<(
     { __typename?: 'User' }
     & Pick<User, 'id' | 'name'>
   )> }
@@ -62,5 +72,21 @@ export const UserDocument = gql`
   })
   export class UserGQL extends Apollo.Query<UserQuery, UserQueryVariables> {
     document = UserDocument;
+    
+  }
+export const UsersDocument = gql`
+    query Users {
+  users {
+    id
+    name
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class UsersGQL extends Apollo.Query<UsersQuery, UsersQueryVariables> {
+    document = UsersDocument;
     
   }
