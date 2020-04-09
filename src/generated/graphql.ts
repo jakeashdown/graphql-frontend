@@ -81,12 +81,12 @@ export const UserDocument = gql`
 }
     ${UserFieldsFragmentDoc}`;
 
-  @Injectable({
+@Injectable({
     providedIn: 'root'
   })
   export class UserGQL extends Apollo.Query<UserQuery, UserQueryVariables> {
     document = UserDocument;
-    
+
   }
 export const UsersDocument = gql`
     query Users {
@@ -96,10 +96,10 @@ export const UsersDocument = gql`
 }
     ${UserFieldsFragmentDoc}`;
 
-  @Injectable({
+@Injectable({
     providedIn: 'root'
   })
   export class UsersGQL extends Apollo.Query<UsersQuery, UsersQueryVariables> {
     document = UsersDocument;
-    
+
   }
