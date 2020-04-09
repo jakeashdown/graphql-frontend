@@ -2,7 +2,7 @@
 
 <div *ngIf="userObservable | async as user; else elseBlock">
     <h3>{{ user.id }}</h3>
-    <div>
+    <div *ngIf="user.name">
         <label>Name: </label>
         <!-- <input [(ngModel)]="user.name" placeholder="name"/> -->
         {{ user.name }}

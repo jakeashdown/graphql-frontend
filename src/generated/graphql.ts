@@ -31,7 +31,7 @@ export type QueryUserArgs = {
 export type User = Identifiable & {
    __typename?: 'User';
   id: Scalars['String'];
-  name: Scalars['String'];
+  name?: Maybe<Scalars['String']>;
 };
 
 export type UserFieldsFragment = (
@@ -77,12 +77,12 @@ export const UserDocument = gql`
 }
     ${UserFieldsFragmentDoc}`;
 
-@Injectable({
+  @Injectable({
     providedIn: 'root'
   })
   export class UserGQL extends Apollo.Query<UserQuery, UserQueryVariables> {
     document = UserDocument;
-
+    
   }
 export const UsersDocument = gql`
     query Users {
@@ -92,10 +92,10 @@ export const UsersDocument = gql`
 }
     ${UserFieldsFragmentDoc}`;
 
-@Injectable({
+  @Injectable({
     providedIn: 'root'
   })
   export class UsersGQL extends Apollo.Query<UsersQuery, UsersQueryVariables> {
     document = UsersDocument;
-
+    
   }
