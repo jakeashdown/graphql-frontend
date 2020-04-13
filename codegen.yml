@@ -29,3 +29,7 @@ generates:
       # Generate a strongly-typed injection-ready Angular service
       # for every defined query, mutation or subscription
       - "typescript-apollo-angular"
+
+    config:
+      # Automatically add __typename field to the generated types
+      nonOptionalTypename: true
