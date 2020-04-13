@@ -28,10 +28,10 @@ export const UserCreatedDocument = gql`
 }
     ${UserFragmentDoc}`;
 
-  @Injectable({
+@Injectable({
     providedIn: 'root'
   })
   export class UserCreatedGQL extends Apollo.Mutation<UserCreatedMutation, UserCreatedMutationVariables> {
     document = UserCreatedDocument;
-    
+
   }

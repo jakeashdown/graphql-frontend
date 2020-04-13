@@ -25,10 +25,10 @@ export const UserListDocument = gql`
 }
     ${UserFragmentDoc}`;
 
-  @Injectable({
+@Injectable({
     providedIn: 'root'
   })
   export class UserListGQL extends Apollo.Query<UserListQuery, UserListQueryVariables> {
     document = UserListDocument;
-    
+
   }

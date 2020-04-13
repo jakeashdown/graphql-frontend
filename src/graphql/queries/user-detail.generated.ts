@@ -27,10 +27,10 @@ export const UserDetailDocument = gql`
 }
     ${UserFragmentDoc}`;
 
-  @Injectable({
+@Injectable({
     providedIn: 'root'
   })
   export class UserDetailGQL extends Apollo.Query<UserDetailQuery, UserDetailQueryVariables> {
     document = UserDetailDocument;
-    
+
   }
