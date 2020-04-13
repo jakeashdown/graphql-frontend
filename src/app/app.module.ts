@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { UserComponent } from './user-detail/user-detail.component';
-import { UsersComponent } from './users/users.component';
+import { UsersComponent } from './user-list/user-list.component';
 
 @NgModule({
   declarations: [

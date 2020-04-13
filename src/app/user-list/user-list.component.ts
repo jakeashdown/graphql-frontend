@@ -6,12 +6,14 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css']
+  templateUrl: './user-list.component.html',
+  styleUrls: ['./user-list.component.css']
 })
 export class UsersComponent implements OnInit {
 
-  // todo: display error when backend is not running
+  // todo: 
+  //  - display error when backend is not running
+  //  - create user module
 
   usersObservable: Observable<User[]>;
 
