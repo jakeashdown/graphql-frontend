@@ -1,3 +1,22 @@
 <h2>Create user</h2>
 
+<form (ngSubmit)="onSubmit()" #createUserForm="ngForm">
+    <div>
+      <label for="user-id">Id</label>
+      <input id="user-id" type="text" required [(ngModel)]="userId" name="user-id">
+    </div>
+
+    <div>
+      <label for="user-name">Name (optional)</label>
+      <input id="user-name" type="text" [(ngModel)]="userName" name="user-name">
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+
+debug:
+<div *ngIf="submitted">
+    Submitted user with id {{userId}} and name {{userName}} for creation
+</div>
+
 <button (click)="toUserList()">List users</button>

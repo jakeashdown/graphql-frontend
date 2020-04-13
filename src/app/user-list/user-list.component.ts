@@ -14,6 +14,7 @@ export class UsersComponent implements OnInit {
   // todo: 
   //  - display error when backend is not running
   //  - create user module
+  //  - style with bootstrap
 
   usersObservable: Observable<User[]>;
 
