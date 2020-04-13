@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
-import { UserComponent } from './user/user.component';
+import { UserComponent } from './user-detail/user-detail.component';
 import { UsersComponent } from './users/users.component';
 
 @NgModule({
