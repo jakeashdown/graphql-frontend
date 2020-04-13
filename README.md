@@ -2,6 +2,24 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0.
 
+## GraphQL code generation
+
+Run `npm run-script generate` to generate TypeScript code from the schema, taken from the configured endpoint, and any defined documents (operations and fragments).
+
+Types will be generated for the entire schema, including:
+* types
+* input types
+* enums
+* interfaces
+* scalars
+* unions
+
+Angular services will be generated for the following documents:
+* queries
+* mutations
+* subscriptions
+* fragments (can be included from other documents)
+
 ## Code linting
 
 Run `ng lint --fix` to lint code and fix any errors.
