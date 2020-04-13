@@ -7,12 +7,14 @@ import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { UserComponent } from './user-detail/user-detail.component';
 import { UsersComponent } from './user-list/user-list.component';
+import { UserCreateComponent } from './user-create/user-create.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
-    UsersComponent
+    UsersComponent,
+    UserCreateComponent
   ],
   imports: [
     BrowserModule,
