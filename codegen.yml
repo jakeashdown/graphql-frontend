@@ -13,13 +13,12 @@ documents: "src/graphql/**/*.graphql"
 # see https://graphql-code-generator.com/docs/plugins/ for a list of plugins
 generates:
 
+  # Generate types for the entire schema:
+  # types, input types, enums, interfaces, scalars and unions
   src/graphql/types.generated.ts:
-
-    # Generate types for your entire schema:
-    # types, input types, enums, interfaces, scalars and unions
     - "typescript"
 
-  # Generate a file for every defined fragment and operation
+  # Generate types in a seperate file for each defined fragment and operation
   src/graphql/:
     preset: "near-operation-file"
     presetConfig:
