@@ -1,9 +1,31 @@
-overwrite: true
-schema: "http://localhost:8080/graphql"
-documents: "src/**/*.graphql"
+# Location of the schema to generate code from, either a:
+#  - URL to a GraphQL endpoint
+#  - local path to a .graphql file
+#  - glob pattern to your GraphQL schema files
+#  - JavaScript file that exports the schema to generate code from
+schema: "http://127.0.0.1:8080/graphql" 
+
+# Array of paths or glob patterns for files which export operations or fragments,
+# using a gql tag or a plain string
+documents: "src/graphql/**/*.graphql"
+
+# Map from output path for the generated code,
+#  to a set of relevant options for the file
 generates:
-  src/generated/graphql.ts:
+  src/graphql/generated/graphql.ts:
+
+    # List of plugins to use when generating the file,
+    # see https://graphql-code-generator.com/docs/plugins/
     plugins:
+
+      # Generate types for your entire schema:
+      # types, input types, enums, interfaces, scalars and unions
       - "typescript"
+
+      # Generate types for your GraphQL documents:
+      # query, mutation, subscription and fragment
       - "typescript-operations"
+
+      # Generate a strongly-typed injection-ready Angular service
+      # for every defined query, mutation or subscription
       - "typescript-apollo-angular"
