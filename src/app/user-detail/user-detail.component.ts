@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+
 import { map, switchMap } from 'rxjs/operators';
-import { User, UserGQL } from 'src/generated/graphql';
 import { Observable } from 'rxjs';
+
+import { User } from 'src/graphql/types.generated';
+import { UserDetailGQL as UserDetailGql } from 'src/graphql/queries/user-detail.generated';
 
 @Component({
   selector: 'app-user',
@@ -17,7 +20,7 @@ export class UserComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private userGql: UserGQL
+    private userGql: UserDetailGql
   ) { }
 
   ngOnInit(): void {

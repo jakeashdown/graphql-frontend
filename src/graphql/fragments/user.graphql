@@ -1,4 +1,4 @@
-fragment userFields on User {
+fragment user on User {
     id
     name
     createdAt

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersGQL, User } from 'src/generated/graphql';
+
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Router } from '@angular/router';
+
+import { User } from 'src/graphql/types.generated';
+import { UserListGQL as UserListGql } from 'src/graphql/queries/user-list.generated';
 
 @Component({
   selector: 'app-users',
@@ -11,15 +13,15 @@ import { Router } from '@angular/router';
 })
 export class UsersComponent implements OnInit {
 
-  // todo: 
+  // todo:
   //  - display error when backend is not running
   //  - create user module
   //  - style with bootstrap
+  //  - find way to auto-cleanup npm package
 
   usersObservable: Observable<User[]>;
 
-  constructor(private usersGql: UsersGQL,     private router: Router,
-    ) { }
+  constructor(private usersGql: UserListGql) { }
 
   ngOnInit(): void {
     this.usersObservable = this.usersGql.watch().valueChanges

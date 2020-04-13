@@ -9,18 +9,24 @@ schema: "http://127.0.0.1:8080/graphql"
 # using a gql tag or a plain string
 documents: "src/graphql/**/*.graphql"
 
-# Map from output path for the generated code,
-#  to a set of relevant options for the file
+# Map from output path for the generated code to a set of options;
+# see https://graphql-code-generator.com/docs/plugins/ for a list of plugins
 generates:
-  src/graphql/generated/graphql.ts:
 
-    # List of plugins to use when generating the file,
-    # see https://graphql-code-generator.com/docs/plugins/
+  src/graphql/types.generated.ts:
+
+    # Generate types for your entire schema:
+    # types, input types, enums, interfaces, scalars and unions
+    - "typescript"
+
+  # Generate a file for every defined fragment and operation
+  src/graphql/:
+    preset: "near-operation-file"
+    presetConfig:
+      extension: ".generated.ts"
+      baseTypesPath: "types.generated.ts"
+
     plugins:
-
-      # Generate types for your entire schema:
-      # types, input types, enums, interfaces, scalars and unions
-      - "typescript"
 
       # Generate types for your GraphQL documents:
       # query, mutation, subscription and fragment
@@ -30,6 +36,7 @@ generates:
       # for every defined query, mutation or subscription
       - "typescript-apollo-angular"
 
-    config:
-      # Automatically add __typename field to the generated types
-      nonOptionalTypename: true
+config:
+
+  # Automatically add __typename field to the generated types
+  nonOptionalTypename: true

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from 'src/generated/graphql';
+
+import { User } from 'src/graphql/types.generated';
 
 @Component({
   selector: 'app-user-create',
@@ -9,8 +10,8 @@ import { User } from 'src/generated/graphql';
 })
 export class UserCreateComponent implements OnInit {
 
-  userId: string = ''
-  userName: string | undefined = null
+  userId = '';
+  userName: string | undefined = null;
 
   submitted = false;
 
