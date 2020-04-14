@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "generate": "graphql-codegen --config codegen.yml"
+    "codegen": "graphql-codegen"
   },
   "private": true,
   "dependencies": {
@@ -20,9 +20,6 @@
     "@angular/platform-browser": "~9.1.0",
     "@angular/platform-browser-dynamic": "~9.1.0",
     "@angular/router": "~9.1.0",
-    "@graphql-codegen/cli": "^1.13.1",
-    "@graphql-codegen/near-operation-file-preset": "^1.13.2",
-    "@graphql-codegen/typescript-apollo-angular": "^1.13.1",
     "apollo-angular": "^1.8.0",
     "apollo-angular-link-http": "^1.9.0",
     "apollo-cache-inmemory": "^1.6.0",
@@ -39,7 +36,8 @@
     "@angular/cli": "~9.1.0",
     "@angular/compiler-cli": "~9.1.0",
     "@angular/language-service": "~9.1.0",
-    "@graphql-codegen/fragment-matcher": "^1.13.2",
+    "@graphql-codegen/cli": "^1.13.1",
+    "@graphql-codegen/near-operation-file-preset": "^1.13.2",
     "@graphql-codegen/introspection": "1.13.1",
     "@graphql-codegen/typescript": "1.13.1",
     "@graphql-codegen/typescript-apollo-angular": "1.13.1",

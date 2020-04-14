@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## GraphQL code generation
 
-Run `npm run-script generate` to generate TypeScript code from the schema, taken from the configured endpoint, and any defined documents (operations and fragments).
+Run `yarn run codegen` to generate TypeScript code from the schema, taken from the configured endpoint, and any defined documents (operations and fragments).
 
 Types will be generated for the entire schema, including:
 * types
