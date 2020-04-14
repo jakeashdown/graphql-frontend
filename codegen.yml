@@ -1,24 +1,19 @@
-# Location of the schema to generate code from, either a:
+# Location of the schema:
 #  - URL to a GraphQL endpoint
 #  - local path to a .graphql file
 #  - glob pattern to your GraphQL schema files
 #  - JavaScript file that exports the schema to generate code from
 schema: "http://127.0.0.1:8080/graphql" 
 
-# Array of paths or glob patterns for files which export operations or fragments,
-# using a gql tag or a plain string
+# Paths or glob patterns for files which export operations or fragments, using a gql tag or a plain string
 documents: "src/graphql/**/*.graphql"
 
-# Map from output path for the generated code to a set of options;
-# see https://graphql-code-generator.com/docs/plugins/ for a list of plugins
 generates:
-
-  # Generate types for the entire schema:
-  # types, input types, enums, interfaces, scalars and unions
+  # Output file for global types: types, input types, enums, interfaces, scalars and unions
   src/graphql/types.generated.ts:
     - "typescript"
 
-  # Generate types in a seperate file for each defined fragment and operation
+  # Output directory for types generated from fragments and operations
   src/graphql/:
     preset: "near-operation-file"
     presetConfig:
@@ -26,16 +21,12 @@ generates:
       baseTypesPath: "types.generated.ts"
 
     plugins:
-
-      # Generate types for your GraphQL documents:
-      # query, mutation, subscription and fragment
+      # Generates static types
       - "typescript-operations"
 
-      # Generate a strongly-typed injection-ready Angular service
-      # for every defined query, mutation or subscription
+      # Generates Angular services
       - "typescript-apollo-angular"
 
 config:
-
   # Automatically add __typename field to the generated types
   nonOptionalTypename: true
