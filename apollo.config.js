@@ -1,14 +1,15 @@
 module.exports = {
   client: {
+    name: "frontend",
     service: {
-      // Get the schema from the endpoint used for code generation
+      name: 'local-backend',
       url: 'http://127.0.0.1:8080/graphql',
-      skipSSLValidation: true,
+      skipSSLValidation: true
     },
-    // Only look at operations defined in graphql files
-    includes: ['**/*.graphql'],
-    // Exclude TypeScript files containing generated code;
-    // otherwise the Apollo extension complains about duplicate operation names
-    excludes: ['**/*.ts']
+    excludes: [
+      'node_modules',
+      '**/*.spec.ts',
+      'src/graphql/**/*generated.ts' // ignores types output by graphql-codegen
+    ],
   }
 };

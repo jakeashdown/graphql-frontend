@@ -18,7 +18,9 @@ Angular services will be generated for the following documents:
 * queries
 * mutations
 * subscriptions
-* fragments (can be included from other documents)
+* fragments (can be included in other documents)
+
+This project includes [a configuration file](apollo.config.js) for the Apollo extension for VS Code which adds syntax highlighting, autocomplete, etc. Because the same configuration is used by the [Apollo CLI](https://github.com/apollographql/apollo-tooling/), this could be used for code generation. Instead we use [graphql-code-generator](https://github.com/dotansimha/graphql-code-generator) which has better Angular integration, generating ready-to-inject services instead of simply the types,
 
 ## Code linting
 
