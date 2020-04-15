@@ -1,37 +1,37 @@
 import * as Types from '../types.generated';
 
-import { UserFragment } from '../fragments/user.generated';
 import gql from 'graphql-tag';
-import { UserFragmentDoc } from '../fragments/user.generated';
 import { Injectable } from '@angular/core';
 import * as Apollo from 'apollo-angular';
 
-export type UserCreatedMutationVariables = {
+export type UserCreationMutationVariables = {
   id: Types.Scalars['String'];
   name?: Types.Maybe<Types.Scalars['String']>;
 };
 
 
-export type UserCreatedMutation = (
+export type UserCreationMutation = (
   { __typename: 'Mutation' }
-  & { createUserIfUnique?: Types.Maybe<(
+  & { createdUser?: Types.Maybe<(
     { __typename: 'User' }
-    & UserFragment
+    & Pick<Types.User, 'id' | 'name' | 'createdAt'>
   )> }
 );
 
-export const UserCreatedDocument = gql`
-    mutation UserCreated($id: String!, $name: String) {
-  createUserIfUnique(id: $id, name: $name) {
-    ...user
+export const UserCreationDocument = gql`
+    mutation UserCreation($id: String!, $name: String) {
+  createdUser: createUserIfUnique(id: $id, name: $name) {
+    id
+    name
+    createdAt
   }
 }
-    ${UserFragmentDoc}`;
+    `;
 
-@Injectable({
+  @Injectable({
     providedIn: 'root'
   })
-  export class UserCreatedGQL extends Apollo.Mutation<UserCreatedMutation, UserCreatedMutationVariables> {
-    document = UserCreatedDocument;
-
+  export class UserCreationGQL extends Apollo.Mutation<UserCreationMutation, UserCreationMutationVariables> {
+    document = UserCreationDocument;
+    
   }

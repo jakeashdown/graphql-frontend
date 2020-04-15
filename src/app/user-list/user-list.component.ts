@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { User } from 'src/graphql/types.generated';
-import { UserListGQL as UserListGql } from 'src/graphql/queries/user-list.generated';
+import { UsersGQL as UsersGql } from 'src/graphql/queries/users.generated';
 
 @Component({
   selector: 'app-users',
@@ -21,7 +21,7 @@ export class UsersComponent implements OnInit {
 
   usersObservable: Observable<User[]>;
 
-  constructor(private usersGql: UserListGql) { }
+  constructor(private usersGql: UsersGql) { }
 
   ngOnInit(): void {
     this.usersObservable = this.usersGql.watch().valueChanges

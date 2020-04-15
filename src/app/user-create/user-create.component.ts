@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { UserCreatedGQL as UserCreatedGql } from 'src/graphql/mutations/user-create.generated';
-import { UserListDocument } from 'src/graphql/queries/user-list.generated';
+import { UserCreationGQL as UserCreationGql } from 'src/graphql/mutations/user-create.generated';
+import { UsersDocument } from 'src/graphql/queries/users.generated';
 
 @Component({
   selector: 'app-user-create',
@@ -15,17 +15,17 @@ export class UserCreateComponent {
 
   constructor(
     private router: Router,
-    private userCreatedGql: UserCreatedGql
+    private userCreatedGql: UserCreationGql
   ) { }
 
   onSubmit() {
     this.userCreatedGql.mutate({ id: this.userId, name: this.userName },
       {
-        update(cache, { data: { createUserIfUnique } }) {
-          const { users } = cache.readQuery({ query: UserListDocument });
+        update(cache, { data: { createdUser } }) {
+          const { users } = cache.readQuery({ query: UsersDocument });
           cache.writeQuery({
-            query: UserListDocument,
-            data: { users: users.concat([createUserIfUnique]) },
+            query: UsersDocument,
+            data: { users: users.concat([createdUser]) },
           });
         }
       }).subscribe();

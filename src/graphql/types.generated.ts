@@ -18,12 +18,25 @@ export type Identifiable = {
 export type Mutation = {
    __typename: 'Mutation';
   createUserIfUnique?: Maybe<User>;
+  updateUserName?: Maybe<User>;
+  deleteUser?: Maybe<User>;
 };
 
 
 export type MutationCreateUserIfUniqueArgs = {
   id: Scalars['String'];
   name?: Maybe<Scalars['String']>;
+};
+
+
+export type MutationUpdateUserNameArgs = {
+  id: Scalars['String'];
+  name?: Maybe<Scalars['String']>;
+};
+
+
+export type MutationDeleteUserArgs = {
+  id: Scalars['String'];
 };
 
 export type Query = {

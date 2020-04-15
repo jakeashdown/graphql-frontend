@@ -1,5 +1,7 @@
-mutation UserCreated($id: String!, $name: String) {
-  createUserIfUnique(id: $id, name: $name) {
-    ...user
+mutation UserCreation($id: String!, $name: String) {
+  createdUser: createUserIfUnique(id: $id, name: $name) {
+    id
+    name
+    createdAt
   }
 }

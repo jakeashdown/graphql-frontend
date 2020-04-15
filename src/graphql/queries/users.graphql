@@ -1,5 +1,7 @@
-fragment user on User {
+query Users {
+  users {
     id
     name
     createdAt
+  }
 }

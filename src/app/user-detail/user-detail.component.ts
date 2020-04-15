@@ -5,7 +5,7 @@ import { map, switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 import { User } from 'src/graphql/types.generated';
-import { UserDetailGQL as UserDetailGql } from 'src/graphql/queries/user-detail.generated';
+import { UserGQL as UserGql } from 'src/graphql/queries/user.generated';
 
 @Component({
   selector: 'app-user',
@@ -20,7 +20,7 @@ export class UserComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private userGql: UserDetailGql
+    private userGql: UserGql
   ) { }
 
   ngOnInit(): void {

@@ -1,5 +1,0 @@
-query UserDetail($id: String!) {
-  user(id: $id) {
-    ...user
-  }
-}
