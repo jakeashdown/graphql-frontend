@@ -7,7 +7,9 @@ module.exports = {
       skipSSLValidation: true
     },
     excludes: [
-      'node_modules',
+      'dist/',
+      'e2e/',
+      'node_modules/',
       '**/*.spec.ts',
       'src/graphql/**/*generated.ts' // ignores types output by graphql-codegen
     ],
