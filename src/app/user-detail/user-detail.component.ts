@@ -53,7 +53,7 @@ export class UserComponent implements OnInit {
             data: { user: updatedUser },
           });
         }
-      }).subscribe();
+      }).subscribe(() => this.router.navigate(['/users']));
   }
 
   deleteUser(user: User) {
@@ -66,8 +66,8 @@ export class UserComponent implements OnInit {
             data: { user: null },
           });
         }
-      }).subscribe();
-  }
+      }).subscribe(() => this.router.navigate(['/users']));
+    }
 
   toUsers() {
     this.router.navigate(['/users']);
