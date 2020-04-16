@@ -8,6 +8,7 @@ import { User } from 'src/graphql/types.generated';
 import { UserGQL as UserGql, UserDocument } from 'src/graphql/queries/user.generated';
 import { UserUpdateGQL as UserUpdateGql } from 'src/graphql/mutations/user-update.generated';
 import { UsersDocument } from 'src/graphql/queries/users.generated';
+import { UserDeletionGQL as UserDeletionGql } from 'src/graphql/mutations/user-delete.generated';
 
 @Component({
   selector: 'app-user',
@@ -24,6 +25,7 @@ export class UserComponent implements OnInit {
     private router: Router,
     private userGql: UserGql,
     private userUpdateGql: UserUpdateGql,
+    private userDeletionGql: UserDeletionGql
   ) { }
 
   ngOnInit(): void {
@@ -49,6 +51,19 @@ export class UserComponent implements OnInit {
           cache.writeQuery({
             query: UsersDocument,
             data: { user: updatedUser },
+          });
+        }
+      }).subscribe();
+  }
+
+  deleteUser(user: User) {
+    this.userDeletionGql.mutate({ id: user.id },
+      {
+        update(cache) {
+          cache.readQuery({ query: UserDocument });
+          cache.writeQuery({
+            query: UsersDocument,
+            data: { user: null },
           });
         }
       }).subscribe();
