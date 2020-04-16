@@ -1,26 +1,31 @@
-<h2>User</h2>
+<div class="row">
+    <div class="col-sm">
+        <div *ngIf="userObservable | async as user; else elseBlock">
+            <h3>{{ user.id }}</h3>
 
-<div *ngIf="userObservable | async as user; else elseBlock">
-    <h3>{{ user.id }}</h3>
-    <div>
-        <label>Name: </label>
-        <input [(ngModel)]="user.name" placeholder="Name (optional)"/>
-      </div>
-    <div>
-        <label>Created at: </label>
-        {{ user.createdAt }}
+            <div class="form-group">
+                <label for="user-name">Name</label>
+                <input class="form-control" id="user-name" type="text" [(ngModel)]="user.name" name="user-name" aria-describedby="name-help">
+                <small id="name-help" class="form-text text-muted">Optional</small>
+              </div>
+
+            <dl>
+                <dt>Created at</dt>
+                <dd>{{ user.createdAt }}</dd>
+            </dl>
+        
+            <button type="button" class="btn btn-primary" (click)="updateUser(user)">Update user</button>
+            <button type="button" class="btn btn-danger" (click)="deleteUser(user)">Delete user</button>
+            <button type="button" class="btn btn-secondary" (click)="toUsers()">List users</button>
+        </div>
+        
+        <ng-template #elseBlock>
+            <h3>User not found</h3>
+            <div>
+                <label>Id: </label>{{ idOfUserNotFound }}
+            </div>
+        
+            <button type="button" class="btn btn-secondary" (click)="toUsers()">List users</button>
+        </ng-template>        
     </div>
-
-    <button (click)="updateUser(user)">Update user</button>
-    <button (click)="deleteUser(user)">Delete user</button>
 </div>
-
-<ng-template #elseBlock>
-    <h3>User not found</h3>
-    <div>
-        <label>Id: </label>{{ idOfUserNotFound }}
-    </div>
-
-</ng-template>
-
-<button (click)="toUsers()">View users</button>

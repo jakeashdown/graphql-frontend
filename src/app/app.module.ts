@@ -10,6 +10,8 @@ import { UserComponent } from './user-detail/user-detail.component';
 import { UsersComponent } from './user-list/user-list.component';
 import { UserCreateComponent } from './user-create/user-create.component';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,6 +20,7 @@ import { UserCreateComponent } from './user-create/user-create.component';
     UserCreateComponent
   ],
   imports: [
+    NgbModule,
     BrowserModule,
     AppRoutingModule,
     GraphQLModule,
