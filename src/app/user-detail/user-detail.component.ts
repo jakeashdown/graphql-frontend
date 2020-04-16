@@ -5,7 +5,9 @@ import { map, switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 import { User } from 'src/graphql/types.generated';
-import { UserGQL as UserGql } from 'src/graphql/queries/user.generated';
+import { UserGQL as UserGql, UserDocument } from 'src/graphql/queries/user.generated';
+import { UserUpdateGQL as UserUpdateGql } from 'src/graphql/mutations/user-update.generated';
+import { UsersDocument } from 'src/graphql/queries/users.generated';
 
 @Component({
   selector: 'app-user',
@@ -20,7 +22,8 @@ export class UserComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private userGql: UserGql
+    private userGql: UserGql,
+    private userUpdateGql: UserUpdateGql,
   ) { }
 
   ngOnInit(): void {
@@ -34,6 +37,21 @@ export class UserComponent implements OnInit {
       }
     )
     );
+  }
+
+  updateUser(user: User) {
+    if (user.name === "") user.name = null 
+
+    this.userUpdateGql.mutate({ id: user.id, name: user.name },
+      {
+        update(cache, { data: { updatedUser } }) {
+          cache.readQuery({ query: UserDocument });
+          cache.writeQuery({
+            query: UsersDocument,
+            data: { user: updatedUser },
+          });
+        }
+      }).subscribe();
   }
 
   toUsers() {

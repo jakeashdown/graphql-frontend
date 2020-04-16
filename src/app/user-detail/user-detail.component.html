@@ -2,14 +2,16 @@
 
 <div *ngIf="userObservable | async as user; else elseBlock">
     <h3>{{ user.id }}</h3>
-    <div *ngIf="user.name">
+    <div>
         <label>Name: </label>
-        {{ user.name }}
-    </div>
+        <input [(ngModel)]="user.name" placeholder="Name (optional)"/>
+      </div>
     <div>
         <label>Created at: </label>
         {{ user.createdAt }}
     </div>
+
+    <button (click)="updateUser(user)">Update user</button>
 </div>
 
 <ng-template #elseBlock>
@@ -20,4 +22,4 @@
 
 </ng-template>
 
-<button (click)="toUsers()">List users</button>
+<button (click)="toUsers()">View users</button>
